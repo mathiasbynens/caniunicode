@@ -1,0 +1,212 @@
+* {
+	box-sizing: border-box;
+}
+html {
+	font: 1rem/1.6 sans-serif;
+	background: #EEE;
+	display: grid;
+	place-items: center center;
+	height: 100vh;
+	margin: 0;
+	--orange: #F8A602;
+}
+body {
+	max-width: 45rem;
+	margin: 0;
+	padding: 1rem;
+	background: #FFF;
+}
+h1, header h2 {
+	margin: 0;
+}
+header h2 {
+	font-size: 1rem;
+}
+footer {
+	margin-top: 2rem;
+	text-align: right;
+}
+
+pre, code {
+	font-family: Source Code Pro, Monaco, Lucida Console, monospace;
+}
+pre code {
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+}
+pre {
+	background: #171717;
+	color: #E6E1DC;
+	white-space: pre;
+	overflow: auto;
+	padding: 1rem;
+	width: 100%;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #999;
+}
+
+.token.selector,
+.token.operator,
+.token.punctuation {
+	color: #FFF;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.tag,
+.token.boolean {
+	color: var(--orange);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.hex,
+.token.string {
+	color: #B0C975;
+}
+
+.token.property,
+.token.entity,
+.token.url,
+.token.attr-name,
+.token.keyword {
+	color: #C27628;
+}
+
+.token.function,
+.token.constant {
+	color: #E5A638;
+}
+
+.token.variable {
+	color: #FDFBA8;
+}
+
+.token.number,
+.token.regex {
+	color: #FCC934;
+}
+
+.token.important,
+.token.deliminator {
+	color: #E45734;
+}
+
+
+/* https://raw.githubusercontent.com/v8/v8.dev/master/src/_css/feature-support.css */
+.feature-support {
+  display: grid;
+  grid-gap: 0.5em;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  background: var(--main-background-color);
+  padding-left: 0;
+  margin-bottom: 0.5em;
+}
+:target .feature-support {
+  background: #FFECA9;
+}
+
+.environment {
+  overflow: hidden;
+  position: relative;
+}
+.environment:not(.has-link)::after {
+  display: block;
+  content: '';
+  padding-top: 100%;
+}
+.feature-support a {
+  display: block;
+  padding: 100% 0 0 0;
+  border-bottom: 0;
+}
+.environment.has-support {
+  background: #376D37;
+}
+.environment.no-support {
+  background: #CCC;
+}
+.environment.partial-support {
+  background: var(--orange);
+}
+.environment.no-support .icon {
+  opacity: 0.4;
+  filter: var(--icon-no-support-filter);
+}
+.environment .support {
+  text-indent: -5000px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.environment .version {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  line-height: 1;
+  color: #000;
+  text-indent: 0;
+  padding: 0.1em 0.2em;
+}
+.environment .version::after {
+  content: '+';
+}
+.environment .icon {
+  text-indent: -5000px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.icon {
+  background-size: 78%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.icon.chrome {
+  background-image: url(chrome.svg);
+}
+.icon.firefox {
+  background-image: url(firefox.svg);
+}
+.icon.safari {
+  background-image: url(safari.png);
+}
+.icon.nodejs {
+  background-image: url(https://v8.dev/_css/img/nodejs.svg);
+}
+
+/* Site-specific overrides */
+.environment.no-support {
+	background: #CD5C5C;
+}
+.environment.no-support .icon {
+	opacity: 1;
+}
+.environment .version::before {
+	content: 'Unicode ';
+}
+.environment .version::after {
+	content: '';
+}
+.environment .icon.current-browser {
+	text-indent: 0;
+}
+.feature-support a {
+	padding: 0;
+}
+.feature-support a:hover, .feature-support a:focus {
+	background: #0A50C2;
+}

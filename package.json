@@ -1,0 +1,39 @@
+{
+	"private": true,
+	"scripts": {
+		"clean": "rm -rf -- output",
+		"build": "node scripts/diff.js && npm run build:web",
+		"build:web": "mkdir -p output/web && npm run build:web:html && npm run build:web:img && npm run build:web:css && npm run build:web:js",
+		"build:web:html": "html-minifier --config-file=.html-minifier.json --input-dir=web --output-dir=output/web --file-ext=html",
+		"build:web:img": "cp ./node_modules/@browser-logos/{chrome,firefox}/*.svg output/web/ && cp ./node_modules/@browser-logos/safari/safari_256x256.png output/web/safari.png",
+		"build:web:css": "postcss web/main.css --output output/web/main.css",
+		"build:web:js": "terser web/main.mjs -cm --module -o output/web/main.mjs",
+		"start": "http-server output/web"
+	},
+	"devDependencies": {
+		"@browser-logos/chrome": "^1.0.17",
+		"@browser-logos/firefox": "^3.0.8",
+		"@browser-logos/safari": "^1.0.7",
+		"cssnano": "^4.1.10",
+		"html-minifier": "^4.0.0",
+		"http-server": "^0.12.1",
+		"jsesc": "^2.5.2",
+		"lodash.template": "^4.5.0",
+		"postcss-cli": "^7.1.0",
+		"regenerate": "^1.4.0",
+		"terser": "^4.6.7",
+		"unicode-10.0.0": "^0.7.5",
+		"unicode-11.0.0": "^0.7.8",
+		"unicode-12.0.0": "^0.8.0",
+		"unicode-13.0.0": "^0.8.0",
+		"unicode-5.1.0": "^0.7.5",
+		"unicode-5.2.0": "^0.7.5",
+		"unicode-6.0.0": "^0.7.5",
+		"unicode-6.1.0": "^0.7.5",
+		"unicode-6.2.0": "^0.7.5",
+		"unicode-6.3.0": "^0.7.5",
+		"unicode-7.0.0": "^0.7.5",
+		"unicode-8.0.0": "^0.7.5",
+		"unicode-9.0.0": "^0.7.5"
+	}
+}

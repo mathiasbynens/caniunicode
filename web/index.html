@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Can I Unicode‽ Unicode support across JavaScript engines</title>
+<meta content="width=device-width,initial-scale=1" name="viewport">
+<!-- Hotlinking is evil! But… the v8.dev owner gave me permission. -->
+<link rel="stylesheet" href="https://v8.dev/_css/feature-support.css">
+<link rel="stylesheet" href="main.css">
+<header>
+	<h1>Can I Unicode‽</h1>
+	<h2>Unicode support across JavaScript engines</h2>
+</header>
+<p>
+	Changes in the Unicode Standard can <a href="https://github.com/tc39/ecma262/issues?q=label%3Aunicode">affect the JavaScript language</a>. This page gives concrete examples and tracks which exact Unicode version each browser supports for each feature.
+</p>
+<p>
+	The latest available Unicode version is <strong class="version-unicode">v13.0.0</strong>.
+	Your current browser supports Unicode <strong class="version-identifiers">v???</strong> for <a href="https://mathiasbynens.be/notes/javascript-identifiers-es6">JavaScript identifiers</a>,
+	and <span class="supports-property-escapes" data-no-support-text="does not support">Unicode <strong class="version-property-escapes">v???</strong> for</span> <a href="https://mathiasbynens.be/notes/es-unicode-property-escapes">property escapes in regular expressions</a>.
+</p>
+<h2>Identifiers</h2>
+<p><a href="https://mathiasbynens.be/notes/javascript-identifiers-es6">The JavaScript identifier grammar</a> determines (among other things) which Unicode symbols can be used within variable names. Every new version of the Unicode Standard potentially changes the set of <code>ID_Start</code> and <code>ID_Continue</code> symbols, thereby changing what’s valid in JavaScript identifiers.</p>
+<pre><code class="language-js"><span class="token comment">// Valid since the release of Unicode v11.0.0:</span><br><span class="token keyword">const</span> Ღ <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span></code></pre>
+<ul class="feature-support feature-support-identifiers">
+	<li class="environment partial-support">
+		<span class="icon chrome">Chrome:</span> <span class="support">supports Unicode <span class="version">v12.0.0</span></span>
+	</li>
+	<li class="environment partial-support">
+		<span class="icon firefox">Firefox:</span> <span class="support">supports Unicode <span class="version">v12.0.0</span></span>
+	</li>
+	<li class="environment partial-support">
+		<span class="icon safari">Safari:</span> <span class="support">supports Unicode <span class="version">v12.0.0</span></span>
+	</li>
+	<li class="environment partial-support">
+		<span class="icon nodejs">Node.js:</span> <span class="support">supports Unicode <span class="version">v12.0.0</span></span>
+	</li>
+	<li class="environment environment-current-browser unknown-support">
+		<span class="icon current-browser">Current browser:</span> <span class="support">supports Unicode <span class="version">v???</span></span>
+	</li>
+</ul>
+<p>Due to <a href="https://bugs.webkit.org/show_bug.cgi?id=208998">a JavaScriptCore bug</a>, Safari currently doesn’t accept unescaped astral identifiers. For example, <code>var &#x2EBE0;</code> incorrectly throws an exception, even though <code>var \u{2EBE0}</code> is accepted.</p>
+<h2>RegExp Unicode property escapes</h2>
+<p>JavaScript regular expressions with the <code>u</code> (Unicode) flag support <a href="https://mathiasbynens.be/notes/es-unicode-property-escapes">Unicode property escape syntax</a> of the form <code>\p{Script=Greek}</code>. Every new version of the Unicode Standard potentially introduces new properties, thereby changing what’s valid in JavaScript regular expression patterns.</p>
+<pre><code class="language-js"><span class="token comment">// Valid since the release of Unicode v13.0.0:</span><br><span class="token keyword">const</span> re <span class="token operator">=</span> <span class="token regex">/\p{Script=Yezidi}/u</span><span class="token punctuation">;</span></code></pre>
+<ul class="feature-support feature-support-property-escapes">
+	<li class="environment partial-support">
+		<span class="icon chrome">Chrome:</span> <span class="support">supports Unicode <span class="version">v12.0.0</span></span>
+	</li>
+	<li class="environment no-support">
+		<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1361876">
+			<span class="icon firefox">Firefox:</span> <span class="support">no support</span>
+		</a>
+	</li>
+	<li class="environment partial-support">
+		<span class="icon safari">Safari:</span> <span class="support">supports Unicode <span class="version">v11.0.0</span></span>
+	</li>
+	<li class="environment partial-support">
+		<span class="icon nodejs">Node.js:</span> <span class="support">supports Unicode <span class="version">v12.0.0</span></span>
+	</li>
+	<li class="environment environment-current-browser unknown-support">
+		<span class="icon current-browser">Current browser:</span> <span class="support">supports Unicode <span class="version">v???</span></span>
+	</li>
+</ul>
+<footer>— <a href="https://twitter.com/mathias" nofollow>@mathias</a></footer>
+<script type="module" src="main.mjs"></script>
