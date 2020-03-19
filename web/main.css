@@ -203,6 +203,11 @@ pre {
 }
 .environment .icon.current-browser {
 	text-indent: 0;
+	padding: .1rem .3rem;
+	font-weight: bold;
+}
+.environment-current-browser.has-support .current-browser {
+	color: #fff;
 }
 .feature-support a {
 	padding: 0;
