@@ -37,7 +37,7 @@ pre code {
 pre {
 	background: #171717;
 	color: #E6E1DC;
-	white-space: pre;
+	white-space: normal;
 	overflow: auto;
 	padding: 1rem;
 	width: 100%;
