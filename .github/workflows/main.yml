@@ -22,5 +22,6 @@ jobs:
         with:
           SSH: true
           SINGLE_COMMIT: true
+          BASE_BRANCH: master
           BRANCH: gh-pages
           FOLDER: output/web
