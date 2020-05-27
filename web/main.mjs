@@ -136,9 +136,7 @@ const findSupportedUnicodeVersions = () => {
 	const propertySupportVersion = propertySupportListItem.querySelector('.version');
 	if (propertyVersion) {
 		const element = document.querySelector('.version-property-escapes');
-		if (propertyVersion !== LATEST_UNICODE_VERSION) {
-			propertySupportListItem.classList.replace('unknown-support', 'partial-support');
-		}
+		propertySupportListItem.classList.replace('unknown-support', propertyVersion === LATEST_UNICODE_VERSION ? 'has-support' : 'partial-support');
 		element.textContent = propertyVersion;
 		propertySupportVersion.textContent = propertyVersion;
 	} else {
