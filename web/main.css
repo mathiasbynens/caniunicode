@@ -100,7 +100,7 @@ pre {
 }
 
 
-/* https://raw.githubusercontent.com/v8/v8.dev/master/src/_css/feature-support.css */
+/* https://raw.githubusercontent.com/v8/v8.dev/main/src/_css/feature-support.css */
 .feature-support {
   display: grid;
   grid-gap: 0.5em;
