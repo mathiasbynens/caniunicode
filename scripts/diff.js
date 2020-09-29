@@ -4,12 +4,12 @@ const writeTest262Tests = require('./write-test262-tests.js');
 
 const newIdContinueOnly = ({ newVersion, oldVersion }) => {
 	const NEW_CONTINUE_ONLY = regenerate()
-		.add(require(`unicode-${newVersion}/Binary_Property/ID_Continue/code-points.js`))
-		.remove(require(`unicode-${newVersion}/Binary_Property/ID_Start/code-points.js`));
+		.add(require(`@unicode/unicode-${newVersion}/Binary_Property/ID_Continue/code-points.js`))
+		.remove(require(`@unicode/unicode-${newVersion}/Binary_Property/ID_Start/code-points.js`));
 
 	const OLD_CONTINUE_ONLY = regenerate()
-		.add(require(`unicode-${oldVersion}/Binary_Property/ID_Continue/code-points.js`))
-		.remove(require(`unicode-${oldVersion}/Binary_Property/ID_Start/code-points.js`));
+		.add(require(`@unicode/unicode-${oldVersion}/Binary_Property/ID_Continue/code-points.js`))
+		.remove(require(`@unicode/unicode-${oldVersion}/Binary_Property/ID_Start/code-points.js`));
 
 	const DELTA_CONTINUE_ONLY = NEW_CONTINUE_ONLY
 		.clone()
@@ -21,10 +21,10 @@ const newIdContinueOnly = ({ newVersion, oldVersion }) => {
 
 const newIdStart = ({ newVersion, oldVersion }) => {
 	const NEW_START = regenerate()
-		.add(require(`unicode-${newVersion}/Binary_Property/ID_Start/code-points.js`));
+		.add(require(`@unicode/unicode-${newVersion}/Binary_Property/ID_Start/code-points.js`));
 
 	const OLD_START = regenerate()
-		.add(require(`unicode-${oldVersion}/Binary_Property/ID_Start/code-points.js`));
+		.add(require(`@unicode/unicode-${oldVersion}/Binary_Property/ID_Start/code-points.js`));
 
 	const DELTA_START = NEW_START
 		.clone()
