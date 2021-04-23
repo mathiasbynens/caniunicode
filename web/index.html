@@ -42,7 +42,6 @@
 		<span class="icon current-browser">Current browser:</span> <span class="support">supports Unicode <span class="version">v???</span></span>
 	</li>
 </ul>
-<p>Due to <a href="https://bugs.webkit.org/show_bug.cgi?id=208998">a JavaScriptCore bug</a>, stable Safari currently doesn’t accept unescaped astral identifiers. For example, <code>var &#x102A7;</code> incorrectly throws an exception, even though the equivalent <code>var \u{102A7}</code> is accepted.</p>
 <h2>RegExp Unicode property escapes</h2>
 <p>JavaScript regular expressions with the <code>u</code> (Unicode) flag support <a href="https://mathiasbynens.be/notes/es-unicode-property-escapes">Unicode property escape syntax</a> of the form <code>\p{Script=Greek}</code>. Every new version of the Unicode Standard potentially introduces new properties, thereby changing what’s valid in JavaScript regular expression patterns.</p>
 <pre><code class="language-js"><span class="token comment">// Valid since the release of Unicode v13.0.0:</span><br><span class="token keyword">const</span> re <span class="token operator">=</span> <span class="token regex">/\p{Script=Yezidi}/u</span><span class="token punctuation">;</span></code></pre>
