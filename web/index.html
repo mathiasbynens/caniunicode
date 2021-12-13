@@ -22,9 +22,9 @@
 <p><a href="https://mathiasbynens.be/notes/javascript-identifiers-es6">The JavaScript identifier grammar</a> determines (among other things) which Unicode symbols can be used within variable names. Every new version of the Unicode Standard potentially changes the set of <code>ID_Start</code> and <code>ID_Continue</code> symbols, thereby changing what’s valid in JavaScript identifiers.</p>
 <pre><code class="language-js"><span class="token comment">// Valid since the release of Unicode v11.0.0:</span><br><span class="token keyword">const</span> Ღ <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span></code></pre>
 <ul class="feature-support feature-support-identifiers">
-	<li class="environment partial-support">
-		<a href="https://bugs.chromium.org/p/v8/issues/detail?id=10380" title="Chrome 84">
-			<span class="icon chrome">Chrome:</span> <span class="support">supports Unicode <span class="version">v13.0.0</span></span>
+	<li class="environment has-support">
+		<a href="https://bugs.chromium.org/p/chromium/issues/detail?id=1260116" title="Chrome 98">
+			<span class="icon chrome">Chrome:</span> <span class="support">supports Unicode <span class="version">v14.0.0</span></span>
 		</a>
 	</li>
 	<li class="environment partial-support">
@@ -46,8 +46,10 @@
 <p>JavaScript regular expressions with the <code>u</code> (Unicode) flag support <a href="https://mathiasbynens.be/notes/es-unicode-property-escapes">Unicode property escape syntax</a> of the form <code>\p{Script=Greek}</code>. Every new version of the Unicode Standard potentially introduces new properties, thereby changing what’s valid in JavaScript regular expression patterns.</p>
 <pre><code class="language-js"><span class="token comment">// Valid since the release of Unicode v14.0.0:</span><br><span class="token keyword">const</span> re <span class="token operator">=</span> <span class="token regex">/\p{Script=Toto}/u</span><span class="token punctuation">;</span></code></pre>
 <ul class="feature-support feature-support-property-escapes">
-	<li class="environment partial-support" title="Chrome 84">
-		<span class="icon chrome">Chrome:</span> <span class="support">supports Unicode <span class="version">v13.0.0</span></span>
+	<li class="environment has-support">
+		<a href="https://bugs.chromium.org/p/chromium/issues/detail?id=1260116" title="Chrome 98">
+			<span class="icon chrome">Chrome:</span> <span class="support">supports Unicode <span class="version">v14.0.0</span></span>
+		</a>
 	</li>
 	<li class="environment partial-support" title="Firefox 78">
 		<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1361876">
