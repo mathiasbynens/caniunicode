@@ -72,3 +72,4 @@ compare({ newVersion: '11.0.0', oldVersion: '10.0.0' });
 compare({ newVersion: '12.0.0', oldVersion: '11.0.0' });
 compare({ newVersion: '13.0.0', oldVersion: '12.0.0' });
 compare({ newVersion: '14.0.0', oldVersion: '13.0.0' });
+compare({ newVersion: '15.0.0', oldVersion: '14.0.0' });
