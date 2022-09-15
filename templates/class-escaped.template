@@ -16,5 +16,7 @@ features: [class, class-fields-private]
 ---*/
 
 class _ {
-  #<% if (property === 'ID_Continue') { %>_<% } %><%= escapedIdentifier %>;
+<% if (property === 'ID_Continue') { %>  #_<%= escapedIdentifier %>;
+<% } else { for (const symbol of identifier) { %>  #<%= escapeIdentifier(symbol) %>;
+<% } } %>
 };
