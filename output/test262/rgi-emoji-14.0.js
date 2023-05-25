@@ -130,7 +130,4 @@ testPropertyOfStrings({
     "\u{1FAF6}\u{1F3FE}",
     "\u{1FAF6}\u{1F3FF}"
   ],
-  nonMatchStrings: [
-    "TODO: update regExpUtils to make nonMatchStrings optional",
-  ],
 });

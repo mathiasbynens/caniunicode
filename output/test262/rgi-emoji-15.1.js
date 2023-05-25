@@ -136,7 +136,4 @@ testPropertyOfStrings({
     "\u{1F9D1}\u{1F3FF}\u200D\u{1F9BC}\u200D\u27A1\uFE0F",
     "\u{1F9D1}\u{1F3FF}\u200D\u{1F9BD}\u200D\u27A1\uFE0F"
   ],
-  nonMatchStrings: [
-    "TODO: update regExpUtils to make nonMatchStrings optional",
-  ],
 });
