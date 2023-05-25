@@ -38,55 +38,59 @@ const writeTest262Tests = ({ version, identifierStart, identifierPart }) => {
 
 	// Create IdentifierStart tests.
 
-	fs.writeFileSync(`./output/test262/start-unicode-${version}.js`, fixLineEndings(createVarTest({
-		version: version,
-		property: 'ID_Start',
-		identifier: identifierStart,
-	})));
-	fs.writeFileSync(`./output/test262/start-unicode-${version}-class.js`, fixLineEndings(createClassTest({
-		version: version,
-		property: 'ID_Start',
-		identifier: identifierStart,
-	})));
+	if (identifierStart.length) {
+		fs.writeFileSync(`./output/test262/start-unicode-${version}.js`, fixLineEndings(createVarTest({
+			version: version,
+			property: 'ID_Start',
+			identifier: identifierStart,
+		})));
+		fs.writeFileSync(`./output/test262/start-unicode-${version}-class.js`, fixLineEndings(createClassTest({
+			version: version,
+			property: 'ID_Start',
+			identifier: identifierStart,
+		})));
 
-	fs.writeFileSync(`./output/test262/start-unicode-${version}-escaped.js`, fixLineEndings(createVarEscapedTest({
-		version: version,
-		property: 'ID_Start',
-		identifier: identifierStart,
-		escapedIdentifier: null,
-	})));
-	fs.writeFileSync(`./output/test262/start-unicode-${version}-class-escaped.js`, fixLineEndings(createClassEscapedTest({
-		version: version,
-		property: 'ID_Start',
-		identifier: identifierStart,
-		escapedIdentifier: null,
-	})));
+		fs.writeFileSync(`./output/test262/start-unicode-${version}-escaped.js`, fixLineEndings(createVarEscapedTest({
+			version: version,
+			property: 'ID_Start',
+			identifier: identifierStart,
+			escapedIdentifier: null,
+		})));
+		fs.writeFileSync(`./output/test262/start-unicode-${version}-class-escaped.js`, fixLineEndings(createClassEscapedTest({
+			version: version,
+			property: 'ID_Start',
+			identifier: identifierStart,
+			escapedIdentifier: null,
+		})));
+	}
 
 	// Create IdentifierPart tests.
 
-	fs.writeFileSync(`./output/test262/part-unicode-${version}.js`, fixLineEndings(createVarTest({
-		version: version,
-		property: 'ID_Continue',
-		identifier: identifierPart,
-	})));
-	fs.writeFileSync(`./output/test262/part-unicode-${version}-class.js`, fixLineEndings(createClassTest({
-		version: version,
-		property: 'ID_Continue',
-		identifier: identifierPart,
-	})));
+	if (identifierPart.length) {
+		fs.writeFileSync(`./output/test262/part-unicode-${version}.js`, fixLineEndings(createVarTest({
+			version: version,
+			property: 'ID_Continue',
+			identifier: identifierPart,
+		})));
+		fs.writeFileSync(`./output/test262/part-unicode-${version}-class.js`, fixLineEndings(createClassTest({
+			version: version,
+			property: 'ID_Continue',
+			identifier: identifierPart,
+		})));
 
-	fs.writeFileSync(`./output/test262/part-unicode-${version}-escaped.js`, fixLineEndings(createVarEscapedTest({
-		version: version,
-		property: 'ID_Continue',
-		identifier: null,
-		escapedIdentifier: escapeIdentifier(identifierPart),
-	})));
-	fs.writeFileSync(`./output/test262/part-unicode-${version}-class-escaped.js`, fixLineEndings(createClassEscapedTest({
-		version: version,
-		property: 'ID_Continue',
-		identifier: null,
-		escapedIdentifier: escapeIdentifier(identifierPart),
-	})));
+		fs.writeFileSync(`./output/test262/part-unicode-${version}-escaped.js`, fixLineEndings(createVarEscapedTest({
+			version: version,
+			property: 'ID_Continue',
+			identifier: null,
+			escapedIdentifier: escapeIdentifier(identifierPart),
+		})));
+		fs.writeFileSync(`./output/test262/part-unicode-${version}-class-escaped.js`, fixLineEndings(createClassEscapedTest({
+			version: version,
+			property: 'ID_Continue',
+			identifier: null,
+			escapedIdentifier: escapeIdentifier(identifierPart),
+		})));
+	}
 
 };
 
