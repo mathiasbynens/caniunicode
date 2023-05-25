@@ -1,6 +1,6 @@
 const regenerate = require('regenerate');
 const {writeIdentifierDelta, writeRgiEmojiDelta} = require('./write-delta.js');
-const writeTest262Tests = require('./write-test262-tests.js');
+const {writeTest262Tests, writeEmojiTest262Tests} = require('./write-test262-tests.js');
 
 const newIdContinueOnly = ({ newVersion, oldVersion }) => {
 	const NEW_CONTINUE_ONLY = regenerate()
@@ -90,6 +90,11 @@ const compareEmoji = ({ newVersion, oldVersion }) => {
 	writeRgiEmojiDelta({
 		newVersion: newVersion,
 		oldVersion: oldVersion,
+		rgiEmoji: RGI_Emoji,
+	});
+
+	writeEmojiTest262Tests({
+		version: newVersion,
 		rgiEmoji: RGI_Emoji,
 	});
 };

@@ -10,6 +10,18 @@ const escapeIdentifier = (identifier) => {
 	});
 };
 
+
+const escapeMatchStrings = (matchStrings) => {
+	return jsesc(matchStrings, {
+		wrap: false,
+		es6: true,
+		compact: false,
+		indent: '  ',
+		indentLevel: 1,
+		quotes: 'double',
+	});
+};
+
 const TEMPLATE_OPTIONS = {
 	interpolate: /<%=([\s\S]+?)%>/g,
 	imports: {
@@ -33,6 +45,8 @@ const TEST_VAR_ESCAPED_TEMPLATE = fs.readFileSync('./templates/var-escaped.templ
 const createVarEscapedTest = template(TEST_VAR_ESCAPED_TEMPLATE);
 const TEST_CLASS_ESCAPED_TEMPLATE = fs.readFileSync('./templates/class-escaped.template', 'utf8');
 const createClassEscapedTest = template(TEST_CLASS_ESCAPED_TEMPLATE);
+const PROPERTY_OF_STRINGS_TEMPLATE = fs.readFileSync('./templates/property-of-strings.template', 'utf8');
+const createPropertyOfStringsTest = template(PROPERTY_OF_STRINGS_TEMPLATE);
 
 const writeTest262Tests = ({ version, identifierStart, identifierPart }) => {
 
@@ -94,4 +108,17 @@ const writeTest262Tests = ({ version, identifierStart, identifierPart }) => {
 
 };
 
-module.exports = writeTest262Tests;
+const writeEmojiTest262Tests = ({ version, rgiEmoji }) => {
+	// Create RGI_Emoji tests.
+	if (rgiEmoji) {
+		fs.writeFileSync(`./output/test262/rgi-emoji-${version}.js`, fixLineEndings(createPropertyOfStringsTest({
+			version: version,
+			matchStrings: escapeMatchStrings(rgiEmoji),
+		})));
+	}
+};
+
+module.exports = {
+	writeTest262Tests,
+	writeEmojiTest262Tests,
+};
