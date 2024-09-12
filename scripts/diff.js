@@ -115,6 +115,7 @@ compare({ newVersion: '13.0.0', oldVersion: '12.0.0' });
 compare({ newVersion: '14.0.0', oldVersion: '13.0.0' });
 compare({ newVersion: '15.0.0', oldVersion: '14.0.0' });
 compare({ newVersion: '15.1.0', oldVersion: '15.0.0' });
+compare({ newVersion: '16.0.0', oldVersion: '15.1.0' });
 
 // Note that although Unicode Emoji UTS#51 follows the versioning system
 // used by the Unicode Standard, the version numbers can be different:
@@ -128,3 +129,4 @@ compareEmoji({ newVersion: '13.1', oldVersion: '13.0' });
 compareEmoji({ newVersion: '14.0', oldVersion: '13.1' });
 compareEmoji({ newVersion: '15.0', oldVersion: '14.0' });
 compareEmoji({ newVersion: '15.1', oldVersion: '15.0' });
+compareEmoji({ newVersion: '16.0', oldVersion: '15.1' });
