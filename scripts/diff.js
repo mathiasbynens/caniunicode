@@ -1,18 +1,31 @@
 const regenerate = require('regenerate');
-const {writeIdentifierDelta, writeRgiEmojiDelta} = require('./write-delta.js');
-const {writeTest262Tests, writeEmojiTest262Tests} = require('./write-test262-tests.js');
+const {
+	writeIdentifierDelta,
+	writeRgiEmojiDelta,
+} = require('./write-delta.js');
+const {
+	writeTest262Tests,
+	writeEmojiTest262Tests,
+} = require('./write-test262-tests.js');
 
 const newIdContinueOnly = ({ newVersion, oldVersion }) => {
 	const NEW_CONTINUE_ONLY = regenerate()
-		.add(require(`@unicode/unicode-${newVersion}/Binary_Property/ID_Continue/code-points.js`))
-		.remove(require(`@unicode/unicode-${newVersion}/Binary_Property/ID_Start/code-points.js`));
+		.add(
+			require(`@unicode/unicode-${newVersion}/Binary_Property/ID_Continue/code-points.js`),
+		)
+		.remove(
+			require(`@unicode/unicode-${newVersion}/Binary_Property/ID_Start/code-points.js`),
+		);
 
 	const OLD_CONTINUE_ONLY = regenerate()
-		.add(require(`@unicode/unicode-${oldVersion}/Binary_Property/ID_Continue/code-points.js`))
-		.remove(require(`@unicode/unicode-${oldVersion}/Binary_Property/ID_Start/code-points.js`));
+		.add(
+			require(`@unicode/unicode-${oldVersion}/Binary_Property/ID_Continue/code-points.js`),
+		)
+		.remove(
+			require(`@unicode/unicode-${oldVersion}/Binary_Property/ID_Start/code-points.js`),
+		);
 
-	const DELTA_CONTINUE_ONLY = NEW_CONTINUE_ONLY
-		.clone()
+	const DELTA_CONTINUE_ONLY = NEW_CONTINUE_ONLY.clone()
 		.remove(OLD_CONTINUE_ONLY)
 		.toArray();
 
@@ -20,16 +33,15 @@ const newIdContinueOnly = ({ newVersion, oldVersion }) => {
 };
 
 const newIdStart = ({ newVersion, oldVersion }) => {
-	const NEW_START = regenerate()
-		.add(require(`@unicode/unicode-${newVersion}/Binary_Property/ID_Start/code-points.js`));
+	const NEW_START = regenerate().add(
+		require(`@unicode/unicode-${newVersion}/Binary_Property/ID_Start/code-points.js`),
+	);
 
-	const OLD_START = regenerate()
-		.add(require(`@unicode/unicode-${oldVersion}/Binary_Property/ID_Start/code-points.js`));
+	const OLD_START = regenerate().add(
+		require(`@unicode/unicode-${oldVersion}/Binary_Property/ID_Start/code-points.js`),
+	);
 
-	const DELTA_START = NEW_START
-		.clone()
-		.remove(OLD_START)
-		.toArray();
+	const DELTA_START = NEW_START.clone().remove(OLD_START).toArray();
 
 	return DELTA_START;
 };
@@ -37,15 +49,20 @@ const newIdStart = ({ newVersion, oldVersion }) => {
 const newRgiEmoji = ({ newVersion, oldVersion }) => {
 	// Check if the old Emoji version exposed RGI_Emoji data.
 	const index = require(`unicode-emoji-${oldVersion}`);
-	if (!Object.hasOwn(index, 'Sequence_Property') || !index.Sequence_Property.includes('RGI_Emoji')) {
+	if (
+		!Object.hasOwn(index, 'Sequence_Property') ||
+		!index.Sequence_Property.includes('RGI_Emoji')
+	) {
 		return;
 	}
 
 	const NEW_RGI_EMOJI = new Set(
-		require(`unicode-emoji-${newVersion}/Sequence_Property/RGI_Emoji/index.js`));
+		require(`unicode-emoji-${newVersion}/Sequence_Property/RGI_Emoji/index.js`),
+	);
 
 	const OLD_RGI_EMOJI = new Set(
-		require(`unicode-emoji-${oldVersion}/Sequence_Property/RGI_Emoji/index.js`));
+		require(`unicode-emoji-${oldVersion}/Sequence_Property/RGI_Emoji/index.js`),
+	);
 
 	const DELTA_RGI_EMOJI = new Set();
 
@@ -100,15 +117,15 @@ const compareEmoji = ({ newVersion, oldVersion }) => {
 };
 
 // ECMAScript 2015 mandated Unicode v5.1.0, so use that as a baseline.
-compare({ newVersion:  '5.2.0', oldVersion:  '5.1.0' });
-compare({ newVersion:  '6.0.0', oldVersion:  '5.2.0' });
-compare({ newVersion:  '6.1.0', oldVersion:  '6.0.0' });
-compare({ newVersion:  '6.2.0', oldVersion:  '6.1.0' });
-compare({ newVersion:  '6.3.0', oldVersion:  '6.2.0' });
-compare({ newVersion:  '7.0.0', oldVersion:  '6.3.0' });
-compare({ newVersion:  '8.0.0', oldVersion:  '7.0.0' });
-compare({ newVersion:  '9.0.0', oldVersion:  '8.0.0' });
-compare({ newVersion: '10.0.0', oldVersion:  '9.0.0' });
+compare({ newVersion: '5.2.0', oldVersion: '5.1.0' });
+compare({ newVersion: '6.0.0', oldVersion: '5.2.0' });
+compare({ newVersion: '6.1.0', oldVersion: '6.0.0' });
+compare({ newVersion: '6.2.0', oldVersion: '6.1.0' });
+compare({ newVersion: '6.3.0', oldVersion: '6.2.0' });
+compare({ newVersion: '7.0.0', oldVersion: '6.3.0' });
+compare({ newVersion: '8.0.0', oldVersion: '7.0.0' });
+compare({ newVersion: '9.0.0', oldVersion: '8.0.0' });
+compare({ newVersion: '10.0.0', oldVersion: '9.0.0' });
 compare({ newVersion: '11.0.0', oldVersion: '10.0.0' });
 compare({ newVersion: '12.0.0', oldVersion: '11.0.0' });
 compare({ newVersion: '13.0.0', oldVersion: '12.0.0' });
@@ -116,6 +133,7 @@ compare({ newVersion: '14.0.0', oldVersion: '13.0.0' });
 compare({ newVersion: '15.0.0', oldVersion: '14.0.0' });
 compare({ newVersion: '15.1.0', oldVersion: '15.0.0' });
 compare({ newVersion: '16.0.0', oldVersion: '15.1.0' });
+compare({ newVersion: '17.0.0', oldVersion: '16.0.0' });
 
 // Note that although Unicode Emoji UTS#51 follows the versioning system
 // used by the Unicode Standard, the version numbers can be different:
@@ -130,3 +148,4 @@ compareEmoji({ newVersion: '14.0', oldVersion: '13.1' });
 compareEmoji({ newVersion: '15.0', oldVersion: '14.0' });
 compareEmoji({ newVersion: '15.1', oldVersion: '15.0' });
 compareEmoji({ newVersion: '16.0', oldVersion: '15.1' });
+compareEmoji({ newVersion: '17.0', oldVersion: '16.0' });

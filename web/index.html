@@ -14,7 +14,7 @@
 	Changes in the Unicode Standard can <a href="https://github.com/tc39/ecma262/issues?q=label%3Aunicode">affect the JavaScript language</a>. A snippet of JavaScript code can go from being syntactically invalid to being valid overnight, when a new version of the Unicode Standard gets released. 🤯 This page gives concrete examples and tracks which exact Unicode version each browser supports for each feature.
 </p>
 <p>
-	The latest available Unicode version is <strong class="version-unicode">v16.0.0</strong>.
+	The latest available Unicode version is <strong class="version-unicode">v17.0.0</strong>.
 	Your current browser supports Unicode <strong class="version-identifiers">v???</strong> for <a href="https://mathiasbynens.be/notes/javascript-identifiers-es6">JavaScript identifiers</a>,
 	and <span class="supports-property-escapes" data-no-support-text="does not support">Unicode <strong class="version-property-escapes">v???</strong> for</span> <a href="https://mathiasbynens.be/notes/es-unicode-property-escapes">property escapes in regular expressions</a>.
 </p>
@@ -22,7 +22,7 @@
 <p><a href="https://mathiasbynens.be/notes/javascript-identifiers-es6">The JavaScript identifier grammar</a> determines (among other things) which Unicode symbols can be used within variable names. Every new version of the Unicode Standard potentially changes the set of <code>ID_Start</code> and <code>ID_Continue</code> symbols, thereby changing what’s valid in JavaScript identifiers.</p>
 <pre><code class="language-js"><span class="token comment">// Valid since the release of Unicode v11.0.0:</span><br><span class="token keyword">const</span> Ღ <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span></code></pre>
 <ul class="feature-support feature-support-identifiers">
-	<!-- https://test262.report/browse/language/identifiers?engines=javascriptcore%2Cspidermonkey%2Cv8 -->
+	<!-- https://test262.fyi/#language/identifiers|v8,jsc,sm,babel -->
 	<li class="environment partial-support" title="Chrome 110">
 		<a href="https://bugs.chromium.org/p/chromium/issues/detail?id=1371208">
 			<span class="icon chrome">Chrome:</span> <span class="support">supports Unicode <span class="version">v15.1.0</span></span>
@@ -43,9 +43,9 @@
 </ul>
 <h2>RegExp Unicode property escapes</h2>
 <p>JavaScript regular expressions with the <code>u</code> (Unicode) flag support <a href="https://mathiasbynens.be/notes/es-unicode-property-escapes">Unicode property escape syntax</a> of the form <code>\p{Script=Greek}</code>. Every new version of the Unicode Standard potentially introduces new properties, thereby changing what’s valid in JavaScript regular expression patterns.</p>
-<pre><code class="language-js"><span class="token comment">// Valid since the release of Unicode v16.0.0:</span><br><span class="token keyword">const</span> re <span class="token operator">=</span> <span class="token regex">/\p{Script=Garay}/u</span><span class="token punctuation">;</span></code></pre>
+<pre><code class="language-js"><span class="token comment">// Valid since the release of Unicode v17.0.0:</span><br><span class="token keyword">const</span> re <span class="token operator">=</span> <span class="token regex">/\p{Script=Sidetic}/u</span><span class="token punctuation">;</span></code></pre>
 <ul class="feature-support feature-support-property-escapes">
-	<!-- https://test262.report/browse/built-ins/RegExp/property-escapes/generated?engines=javascriptcore%2Cspidermonkey%2Cv8 -->
+	<!-- https://test262.fyi/#built-ins/RegExp/property-escapes/generated|v8,jsc,sm,babel -->
 	<li class="environment partial-support" title="Chrome 110">
 		<a href="https://bugs.chromium.org/p/v8/issues/detail?id=13342">
 			<span class="icon chrome">Chrome:</span> <span class="support">supports Unicode <span class="version">v15.1.0</span></span>
