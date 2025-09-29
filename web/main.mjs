@@ -1,6 +1,6 @@
 const isSupportedPropertyEscape = (propertyEscape) => {
 	try {
-		RegExp(`\\p{${ propertyEscape }}`, 'u');
+		RegExp(`\\p{${propertyEscape}}`, 'u');
 		return true;
 	} catch {
 		return false;
@@ -9,7 +9,7 @@ const isSupportedPropertyEscape = (propertyEscape) => {
 
 const isSupportedIdentifier = (id) => {
 	try {
-		Function(`var ${ id };`);
+		Function(`var ${id};`);
 		return true;
 	} catch {
 		return false;
@@ -21,6 +21,14 @@ const isSupportedIdentifier = (id) => {
 // Appropriate `propertyEscape` values can be found by reading
 // https://github.com/tc39/ecma262/issues?q=label%3Aunicode.
 const testData = new Map([
+	[
+		'v17.0.0',
+		{
+			propertyEscape: 'Script=Sidetic',
+			identifierStart: String.raw`\u088F`,
+			identifierPart: String.raw`\u1ACF`,
+		},
+	],
 	[
 		'v16.0.0',
 		{
@@ -160,15 +168,23 @@ const findSupportedUnicodeVersionIdentifier = () => {
 	return false;
 };
 
-const LATEST_UNICODE_VERSION = 'v16.0.0';
+const LATEST_UNICODE_VERSION = 'v17.0.0';
 const findSupportedUnicodeVersions = () => {
 	const propertyVersion = findSupportedUnicodeVersionProperty();
 	const identifierVersion = findSupportedUnicodeVersionIdentifier();
-	const propertySupportListItem = document.querySelector('.feature-support-property-escapes .environment-current-browser');
-	const propertySupportVersion = propertySupportListItem.querySelector('.version');
+	const propertySupportListItem = document.querySelector(
+		'.feature-support-property-escapes .environment-current-browser',
+	);
+	const propertySupportVersion =
+		propertySupportListItem.querySelector('.version');
 	if (propertyVersion) {
 		const element = document.querySelector('.version-property-escapes');
-		propertySupportListItem.classList.replace('unknown-support', propertyVersion === LATEST_UNICODE_VERSION ? 'has-support' : 'partial-support');
+		propertySupportListItem.classList.replace(
+			'unknown-support',
+			propertyVersion === LATEST_UNICODE_VERSION
+				? 'has-support'
+				: 'partial-support',
+		);
 		element.textContent = propertyVersion;
 		propertySupportVersion.textContent = propertyVersion;
 	} else {
@@ -177,10 +193,19 @@ const findSupportedUnicodeVersions = () => {
 		propertySupportListItem.classList.replace('unknown-support', 'no-support');
 		propertySupportVersion.remove();
 	}
-	document.querySelector('.version-identifiers').textContent = identifierVersion;
-	const identifierSupportListItem = document.querySelector('.feature-support-identifiers .environment-current-browser');
-	identifierSupportListItem.classList.replace('unknown-support', identifierVersion === LATEST_UNICODE_VERSION ? 'has-support' : 'partial-support');
-	const identifierSupportVersion = identifierSupportListItem.querySelector('.version');
+	document.querySelector('.version-identifiers').textContent =
+		identifierVersion;
+	const identifierSupportListItem = document.querySelector(
+		'.feature-support-identifiers .environment-current-browser',
+	);
+	identifierSupportListItem.classList.replace(
+		'unknown-support',
+		identifierVersion === LATEST_UNICODE_VERSION
+			? 'has-support'
+			: 'partial-support',
+	);
+	const identifierSupportVersion =
+		identifierSupportListItem.querySelector('.version');
 	identifierSupportVersion.textContent = identifierVersion;
 };
 
