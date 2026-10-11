@@ -17,5 +17,4 @@ features: [class, class-fields-private]
 
 class _ {
   #_\u05C8\u05C9\u0B53\u0B54\u1ADE\u1ADF\u1AEC\u1AED\u1AEE\u1AEF\u1AF0\u{10ECB}\u{10ECC}\u{10ECD}\u{10ECE}\u{10ECF}\u{10EF0}\u{10EF1}\u{10EF2}\u{10EF3}\u{10EF4}\u{10EF5}\u{10EF6}\u{10EF7}\u{10EF8}\u{10EF9}\u{11DF0}\u{1D127}\u{1D128}\u{1D250}\u{1D251}\u{1D252}\u{1D25B}\u{1D25C}\u{1D25F}\u{1D280}\u{1D281};
-
 };

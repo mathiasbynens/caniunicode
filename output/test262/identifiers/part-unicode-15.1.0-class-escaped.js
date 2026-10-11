@@ -17,5 +17,4 @@ features: [class, class-fields-private]
 
 class _ {
   #_\u200C\u200D\u30FB\uFF65;
-
 };

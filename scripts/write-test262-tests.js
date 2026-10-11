@@ -34,7 +34,12 @@ const template = (input) => {
 };
 
 const fixLineEndings = (string) => {
-	return string.replaceAll(';\n\n}', ';\n}').trimEnd() + '\n';
+	// Normalize CRLF to LF first, since templates may be checked out with
+	// Windows line endings (e.g. with `core.autocrlf`).
+	return string
+		.replaceAll('\r\n', '\n')
+		.replaceAll(';\n\n}', ';\n}')
+		.trimEnd() + '\n';
 };
 
 const TEST_VAR_TEMPLATE = fs.readFileSync('./templates/var.template', 'utf8');
