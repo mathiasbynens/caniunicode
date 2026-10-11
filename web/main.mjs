@@ -22,6 +22,14 @@ const isSupportedIdentifier = (id) => {
 // https://github.com/tc39/ecma262/issues?q=label%3Aunicode.
 const testData = new Map([
 	[
+		'v18.0.0',
+		{
+			propertyEscape: 'Script=Jurchen',
+			identifierStart: String.raw`\u088F`,
+			identifierPart: String.raw`\u1ACF`,
+		},
+	],
+	[
 		'v17.0.0',
 		{
 			propertyEscape: 'Script=Sidetic',
@@ -168,7 +176,7 @@ const findSupportedUnicodeVersionIdentifier = () => {
 	return false;
 };
 
-const LATEST_UNICODE_VERSION = 'v17.0.0';
+const LATEST_UNICODE_VERSION = 'v18.0.0';
 const findSupportedUnicodeVersions = () => {
 	const propertyVersion = findSupportedUnicodeVersionProperty();
 	const identifierVersion = findSupportedUnicodeVersionIdentifier();
